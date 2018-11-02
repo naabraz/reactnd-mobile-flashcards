@@ -1,0 +1,1 @@
+export const h1Size = '64px'
