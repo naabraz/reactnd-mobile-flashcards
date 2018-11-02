@@ -1,9 +1,8 @@
 import React from 'react'
-import { Platform } from 'react-native'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
-import { steelTeal, white } from '../utils/colors'
+import { steelTeal, white } from './style/utils/colors'
 
 import Decks from './Decks'
 import NewDeck from './NewDeck'

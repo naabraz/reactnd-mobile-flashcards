@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 
-import { inchWorm } from './utils/colors'
+import { inchWorm } from './components/style/utils/colors'
 
 import MainStatusBar from './components/MainStatusBar'
 import MainNavigator from './components/MainNavigator'

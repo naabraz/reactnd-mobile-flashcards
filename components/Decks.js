@@ -1,29 +1,11 @@
 import React, { Component } from 'react'
-import styled from 'styled-components/native'
 
-import { h1Size, h2Size } from '../utils/fontSizes'
-import { nyanza } from '../utils/colors'
 import { mockDecks } from '../utils/mocks'
 
-const Wrapper = styled.View`
-  flex: 2
-  align-items: center
-  background-color: ${nyanza}
-`
-
-const Title = styled.Text`
-  margin-top: 50
-  margin-bottom: 50
-  font-size: ${h1Size}
-  text-align: center;
-`
-const DeckList = styled.FlatList`
-`
-
-const DeckName = styled.Text`
-  font-size: ${h2Size}
-  margin-bottom: 50
-`
+import { Title } from './style/Title'
+import { DeckList } from './style/List'
+import { DeckName } from './style/Text'
+import { Wrapper } from './style/Wrapper'
 
 class Decks extends Component {
   render() {
