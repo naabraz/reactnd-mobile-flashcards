@@ -1,3 +1,5 @@
 export const inchWorm = '#ABDF75'
 export const black = '#000'
+export const white = '#fff'
 export const nyanza = '#D6F9DD'
+export const steelTeal = '#558C8C'

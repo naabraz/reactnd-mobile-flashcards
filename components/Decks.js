@@ -6,7 +6,7 @@ import { nyanza } from '../utils/colors'
 import { mockDecks } from '../utils/mocks'
 
 const Wrapper = styled.View`
-  flex: 1
+  flex: 2
   align-items: center
   background-color: ${nyanza}
 `
