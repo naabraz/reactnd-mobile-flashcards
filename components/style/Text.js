@@ -7,3 +7,9 @@ export const DeckName = styled.Text`
   margin-bottom: 50
   text-align: center
 `
+
+export const NewDeckInput = styled.TextInput`
+  font-size: ${h2Size}
+  height: 50
+  text-align: center
+`
