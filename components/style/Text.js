@@ -2,10 +2,13 @@ import styled from 'styled-components/native'
 
 import { h2Size } from './utils/fontSizes'
 
+import { white } from '../style/utils/colors'
+
 export const DeckName = styled.Text`
   font-size: ${h2Size}
-  margin-bottom: 50
   text-align: center
+  color: ${white}
+  padding: 5%
 `
 
 export const NewDeckInput = styled.TextInput`
