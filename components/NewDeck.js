@@ -18,7 +18,9 @@ class NewDeck extends Component {
           value={this.state.text}
           placeholder={'Deck Name'}
         />
-        <AddDeck><AddDeckText>Add Deck</AddDeckText></AddDeck>
+        <AddDeck>
+          <AddDeckText>Add Deck</AddDeckText>
+        </AddDeck>
       </Wrapper>
     )
   }
