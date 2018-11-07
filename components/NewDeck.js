@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import { Title } from './style/Title'
 import { Wrapper } from './style/Wrapper'
-import { NewDeckInput } from './style/Text'
+import { NewDeckInput, AddDeckText } from './style/Text'
+import { AddDeck } from './style/Button'
 
 class NewDeck extends Component {
 
@@ -17,6 +18,7 @@ class NewDeck extends Component {
           value={this.state.text}
           placeholder={'Deck Name'}
         />
+        <AddDeck><AddDeckText>Add Deck</AddDeckText></AddDeck>
       </Wrapper>
     )
   }

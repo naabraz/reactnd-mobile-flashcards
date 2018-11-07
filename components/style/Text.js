@@ -16,3 +16,10 @@ export const NewDeckInput = styled.TextInput`
   height: 50
   text-align: center
 `
+
+export const AddDeckText = styled.Text`
+  font-size: 18px
+  text-align: center
+  padding: 5%
+  color: ${white}
+`
