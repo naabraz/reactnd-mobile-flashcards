@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavigationActions } from 'react-navigation'
 
 import { addDeck } from '../api/DeckStorage'
 
@@ -11,8 +12,15 @@ class NewDeck extends Component {
 
   state = { name: '' }
 
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({
+      key: 'Deck'
+    }))
+  }
+
   submitDeck = () => {
     addDeck(this.state.name)
+    this.toHome()
   }
 
   render() {

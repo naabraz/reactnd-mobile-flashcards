@@ -18,7 +18,7 @@ class Decks extends Component {
     fetchDecks()
       .then((decks) => {
         this.setState({decks})
-      })
+    })
   }
 
   getDeck = () => console.log('getDeck')
@@ -41,7 +41,6 @@ class Decks extends Component {
               keyExtractor={(index) => index.toString()}
             />
           }
-
       </Wrapper>
     )
   }
