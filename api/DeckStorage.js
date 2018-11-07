@@ -4,7 +4,7 @@ export const DECK_STORAGE_KEY = 'flashcards:decks'
 
 export function fetchDecks() {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
-    .then((results) => console.log('tha result', results))
+  .then((result) => JSON.parse(result))
 }
 
 export function addDeck(deck) {

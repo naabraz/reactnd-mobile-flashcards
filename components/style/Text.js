@@ -23,3 +23,8 @@ export const AddDeckText = styled.Text`
   padding: 5%
   color: ${white}
 `
+
+export const EmptyDeckText = styled.Text`
+  font-size: 18px
+  text-align: center
+`
