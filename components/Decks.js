@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { mockDecks } from '../utils/mocks'
+import { fetchDecks } from '../api/DeckStorage'
 
 import { Title } from './style/Title'
 import { DeckList } from './style/List'
@@ -9,6 +10,11 @@ import { Wrapper } from './style/Wrapper'
 import { DeckButton } from './style/Button'
 
 class Decks extends Component {
+  
+  componentDidMount() {
+    fetchDecks()
+  }
+  
   getDeck = () => console.log('getDeck')
 
   render() {
