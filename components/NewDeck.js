@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
-import { NavigationActions } from 'react-navigation'
 
-import { addDeck } from '../api/DeckStorage'
+import { addDeck, removeDeck } from '../api/DeckStorage'
 
-import { Title } from './style/Title'
 import { Wrapper } from './style/Wrapper'
 import { NewDeckInput, AddDeckText } from './style/Text'
 import { AddDeck } from './style/Button'
 
 class NewDeck extends Component {
+  static navigationOptions = {
+    title: 'New Deck',
+  }
 
-  state = { name: '' }
+  state = {
+    name: ''
+  }
 
   toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({
-      key: 'Deck'
-    }))
+    this.props.navigation.navigate('Decks')
   }
 
   submitDeck = () => {
@@ -26,7 +27,6 @@ class NewDeck extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>New Deck</Title>
         <NewDeckInput
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}

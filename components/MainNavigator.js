@@ -7,21 +7,42 @@ import { steelTeal, white } from './style/utils/colors'
 import Decks from './Decks'
 import NewDeck from './NewDeck'
 
-export default MainNavigator = createBottomTabNavigator({
-    Decks: {
-      screen: Decks, 
-      navigationOptions: { 
-        tabBarLabel: 'My Decks',
-        tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} /> 
-      }
-    },
-    NewDeck: { 
-      screen: NewDeck,
-      navigationOptions: { 
-        tabBarLabel: 'Add Deck',
-        tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} /> 
-      }
-    },
+const headerOptions = {
+  headerStyle: {
+    backgroundColor: steelTeal,
+  },
+  headerTintColor: white,
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  }
+}
+
+const DeckStack = createStackNavigator({
+  Decks: {
+    screen: Decks,
+    navigationOptions: {
+      ...headerOptions,
+      tabBarLabel: 'My Decks',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+    }
+  },
+})
+
+const NewDeckStack = createStackNavigator({
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      ...headerOptions,
+      tabBarLabel: 'Add Deck',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+    }
+  },
+})
+
+export default MainNavigator = createBottomTabNavigator(
+  {
+    Decks: DeckStack,
+    NewDeck: NewDeckStack,
   },
   {
     tabBarOptions: {

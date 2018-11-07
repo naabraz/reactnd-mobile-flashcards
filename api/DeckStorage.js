@@ -12,3 +12,7 @@ export function addDeck(deck) {
     [deck]: { title: deck },
   }))
 }
+
+export function removeDeck() {
+  return AsyncStorage.clear()
+}
