@@ -31,7 +31,7 @@ class NewDeck extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper behavior="padding" enabled>
         <NewDeckInput
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
