@@ -1,9 +1,9 @@
 import styled from 'styled-components/native'
 
-import { inchWorm } from '../style/utils/colors'
+import { orange } from '../style/utils/colors'
 
 export const DeckButton = styled.TouchableOpacity`
-  background: ${inchWorm}
+  background: ${orange}
   border-radius: 5px
   margin-bottom: 10
   width: 55%
@@ -11,7 +11,7 @@ export const DeckButton = styled.TouchableOpacity`
 `
 
 export const AddDeck = styled.TouchableOpacity`
-  background: ${inchWorm}
+  background: ${orange}
   border-radius: 5px
   width: 50%
   margin-left: 25%

@@ -2,14 +2,14 @@ import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
-import { steelTeal, white } from './style/utils/colors'
+import { darkGrey, white } from './style/utils/colors'
 
 import Decks from './Decks'
 import NewDeck from './NewDeck'
 
 const headerOptions = {
   headerStyle: {
-    backgroundColor: steelTeal,
+    backgroundColor: darkGrey,
   },
   headerTintColor: white,
   headerTitleStyle: {
@@ -49,7 +49,7 @@ export default MainNavigator = createBottomTabNavigator(
       activeTintColor: white,
       style: {
         height: 60,
-        backgroundColor: steelTeal,
+        backgroundColor: darkGrey,
       }
     }
   }

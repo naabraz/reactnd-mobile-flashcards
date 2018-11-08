@@ -15,6 +15,8 @@ export const NewDeckInput = styled.TextInput`
   font-size: ${h2Size}
   height: 50
   text-align: center
+  margin-top: 50%
+  margin-bottom: 10%
 `
 
 export const AddDeckText = styled.Text`
