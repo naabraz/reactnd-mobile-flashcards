@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { addDeck, removeDeck } from '../api/DeckStorage'
+import { addDeck } from '../api/DeckStorage'
 
 import { Wrapper } from './style/Wrapper'
 import { NewDeckInput, AddDeckText } from './style/Text'
@@ -21,7 +21,12 @@ class NewDeck extends Component {
 
   submitDeck = () => {
     addDeck(this.state.name)
+    this.setState({name: ''})
     this.toHome()
+  }
+  
+  componentWillUnmount() {
+    willFocusSubscription.remove()
   }
 
   render() {

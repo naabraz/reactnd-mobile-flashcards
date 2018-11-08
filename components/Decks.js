@@ -12,31 +12,23 @@ class Decks extends Component {
     title: 'Decks',
   }
 
+  getAllDecks = () => fetchDecks().then((decks) => this.setState({decks}))
+
   willFocusSubscription = this.props.navigation.addListener(
-    'willFocus',
-    payload => {
-      fetchDecks()
-      .then((decks) => {
-        this.setState({decks})
-      })
-    }
+    'willFocus', () => this.getAllDecks()
   )
 
   state = {
     decks: {}
   }
 
-  componentDidMount() {
-    fetchDecks()
-      .then((decks) => {
-        this.setState({decks})
-    })
+  componentWillUnmount() {
+    willFocusSubscription.remove()
   }
 
   getDeck = () => console.log('getDeck')
 
   render() {
-
     return (
       <Wrapper>
           {
