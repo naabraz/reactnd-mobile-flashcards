@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { darkGrey } from './components/style/utils/colors'
+import { darkGray } from './components/style/utils/colors'
 
 import MainStatusBar from './components/MainStatusBar'
 import MainNavigator from './components/MainNavigator'
@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <MainView>
-        <MainStatusBar backgroundColor={darkGrey} barStyle={'light-content'}/>
+        <MainStatusBar backgroundColor={darkGray} barStyle={'light-content'}/>
         <MainNavigator />
       </MainView>
     )
