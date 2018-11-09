@@ -17,6 +17,7 @@ export const NewDeckInput = styled.TextInput`
   text-align: center
   padding-top: 50%
   padding-bottom: 10%
+  color: black
 `
 
 export const AddDeckText = styled.Text`

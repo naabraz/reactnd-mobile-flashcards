@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Text } from 'react-native'
 
 import { addDeck } from '../api/DeckStorage'
 
@@ -12,19 +13,31 @@ class NewDeck extends Component {
   }
 
   state = {
-    name: ''
+    name: '',
+    nameError: false,
   }
 
   toHome = () => {
     this.props.navigation.navigate('Decks')
   }
 
-  submitDeck = () => {
-    addDeck(this.state.name)
-    this.setState({name: ''})
-    this.toHome()
+  checkDeckName = () => {
+    if (this.state.name.trim() === '') {
+      this.setState(() => ({ nameError: true }))
+    } else {
+      this.submitDeck()
+    }
   }
-  
+
+  submitDeck = () => {
+    if (!this.state.nameError) {
+      addDeck(this.state.name)
+
+      this.setState({name: ''})
+      this.toHome()
+    }
+  }
+
   componentWillUnmount() {
     willFocusSubscription.remove()
   }
@@ -33,11 +46,16 @@ class NewDeck extends Component {
     return (
       <Wrapper behavior="padding" enabled>
         <NewDeckInput
-          onChangeText={(name) => this.setState({name})}
+          onChangeText={(name) => this.setState({name, nameError: false})}
           value={this.state.name}
           placeholder={'Deck Name'}
         />
-        <AddDeck onPress={this.submitDeck}>
+
+        {
+          this.state.nameError && (<Text style={{color: '#f00'}}>{'You need to enter a Deck Name'}</Text>)
+        }
+
+        <AddDeck onPress={this.checkDeckName}>
           <AddDeckText>Add Deck</AddDeckText>
         </AddDeck>
       </Wrapper>
