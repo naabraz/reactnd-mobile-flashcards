@@ -6,7 +6,7 @@ const Button = `
   background: ${orange}
   border-radius: 5px
   margin-left: 25%
-  margin-bottom: 10
+  margin-bottom: 5%
 `
 
 const MediumButton = `
@@ -38,7 +38,14 @@ export const AddCard = styled.TouchableOpacity`
   ${MediumButton}
   ${CenteredButton}
 `
+
 export const StartQuiz = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+`
+
+export const AddCardQuestion = styled.TouchableOpacity`
   ${Button}
   ${MediumButton}
   ${CenteredButton}

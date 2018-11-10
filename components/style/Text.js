@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 import { h2Size, h3Size } from './utils/fontSizes'
 
-import { white, black } from '../style/utils/colors'
+import { white, black, orange } from '../style/utils/colors'
 
 const ButtonText = `
   text-align: center
@@ -27,9 +27,25 @@ export const DeckNameButton = styled.Text`
 export const NewDeckInput = styled.TextInput`
   font-size: ${h2Size}
   text-align: center
-  padding-top: 30%
-  padding-bottom: 10%
+  margin-top: 30%
+  margin-bottom: 5%
+  margin-left: 5%
   color: black
+  width: 90%
+  padding: 5%
+  border-radius: 5px
+  border: solid 1px ${orange}
+`
+
+export const NewCardInput = styled.TextInput`
+  font-size: ${h2Size}
+  text-align: center
+  border-radius: 5px
+  border: solid 1px ${orange}
+  margin-top: 5%
+  margin-left: 5%
+  width: 90%
+  padding: 5%
 `
 
 export const AddDeckText = styled.Text`
@@ -55,7 +71,14 @@ export const DeckName = styled.Text`
   padding-top: 10%
   margin-bottom: 10%
 `
+
 export const AddCardText = styled.Text`
+  ${ButtonText}
+  ${MediumButtonText}
+  padding: 5%
+`
+
+export const AddCardQuestionText = styled.Text`
   ${ButtonText}
   ${MediumButtonText}
   padding: 5%

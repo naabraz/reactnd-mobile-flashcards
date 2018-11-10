@@ -7,6 +7,7 @@ import { darkGray, lightGray, white, orange } from './style/utils/colors'
 import DecksList from './DecksList'
 import NewDeck from './NewDeck'
 import Deck from './Deck'
+import NewCard from './NewCard'
 
 const headerOptions = {
   headerStyle: {
@@ -31,6 +32,12 @@ const DecksListStack = createStackNavigator({
       ...headerOptions,
     }
   },
+  NewCard: {
+    screen: NewCard,
+    navigationOptions: {
+      ...headerOptions,
+    }
+  }
 })
 
 const NewDeckStack = createStackNavigator({

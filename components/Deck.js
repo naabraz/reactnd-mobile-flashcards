@@ -21,7 +21,7 @@ export class Deck extends Component {
       <Wrapper>
         <DeckName>{deckName}</DeckName>
         <DeckCardsQuantity style={{color: black}}>{`${cardsQuantity} cards`}</DeckCardsQuantity>
-        <AddCard>
+        <AddCard onPress={() => navigation.navigate('NewCard', { deckName })}>
           <AddCardText>Add Card</AddCardText>
         </AddCard>
         <StartQuiz>
