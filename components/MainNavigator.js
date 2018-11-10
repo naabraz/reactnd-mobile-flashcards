@@ -4,7 +4,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 import { darkGray, lightGray, white, orange } from './style/utils/colors'
 
-import Decks from './Decks'
+import DecksList from './DecksList'
 import NewDeck from './NewDeck'
 
 const headerOptions = {
@@ -19,7 +19,7 @@ const headerOptions = {
 
 const DeckStack = createStackNavigator({
   Decks: {
-    screen: Decks,
+    screen: DecksList,
     navigationOptions: {
       ...headerOptions,
       tabBarLabel: 'My Decks',
@@ -39,15 +39,17 @@ const NewDeckStack = createStackNavigator({
 
 export default MainNavigator = createBottomTabNavigator(
   {
-    Decks: DeckStack,
-    NewDeck: NewDeckStack,
+    ['My Decks']: DeckStack,
+    ['New Deck']: NewDeckStack,
   },
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state
 
-        const icons = routeName === 'NewDeck' ? <MaterialIcons name={'add-box'} size={30} color={tintColor} /> : <MaterialCommunityIcons name={'cards'} size={30} color={tintColor} />
+        const icons = routeName === 'NewDeck' ? 
+          <MaterialIcons name={'add-box'} size={30} color={tintColor} /> : 
+          <MaterialCommunityIcons name={'cards'} size={30} color={tintColor} />
 
         return icons
       },

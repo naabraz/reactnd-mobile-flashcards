@@ -9,7 +9,7 @@ import { DeckButton } from './style/Button'
 
 class Decks extends Component {
   static navigationOptions = {
-    title: 'Decks',
+    title: 'My Decks',
   }
 
   getAllDecks = () => fetchDecks().then((decks) => this.setState({decks}))
