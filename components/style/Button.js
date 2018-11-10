@@ -2,18 +2,44 @@ import styled from 'styled-components/native'
 
 import { orange } from '../style/utils/colors'
 
-export const DeckButton = styled.TouchableOpacity`
+const Button = `
   background: ${orange}
   border-radius: 5px
-  margin-bottom: 10
-  width: 55%
   margin-left: 25%
+  margin-bottom: 10
+`
+
+const MediumButton = `
+  width: 50%
+`
+
+const BigButton = `
+  width: 55%
   padding: 5%
 `
 
-export const AddDeck = styled.TouchableOpacity`
-  background: ${orange}
-  border-radius: 5px
-  width: 50%
+const CenteredButton = `
   margin-left: 25%
+`
+
+export const DeckButton = styled.TouchableOpacity`
+  ${Button}
+  ${BigButton}
+`
+
+export const AddDeck = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+`
+
+export const AddCard = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+`
+export const StartQuiz = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
 `

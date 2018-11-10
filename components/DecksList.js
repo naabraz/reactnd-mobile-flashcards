@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { fetchDecks } from '../api/DeckStorage'
 
 import { DeckList } from './style/List'
-import { DeckName, EmptyDeckText, DeckCardsQuantity } from './style/Text'
+import { DeckNameButton, EmptyDeckText, DeckCardsQuantity } from './style/Text'
 import { Wrapper } from './style/Wrapper'
 import { DeckButton } from './style/Button'
 
@@ -26,23 +26,26 @@ class Decks extends Component {
     willFocusSubscription.remove()
   }
 
-  getDeck = () => console.log('getDeck')
-
   render() {
+    const decks = this.state.decks
+    const { navigation } = this.props
+
     return (
       <Wrapper>
           {
-            this.state.decks === null
+            decks === null
             ?
               <EmptyDeckText>No Decks were found</EmptyDeckText>
             :
               <DeckList
-                data={Object.keys(this.state.decks)}
+                data={Object.keys(decks)}
                 renderItem={({ item }) =>
-                  <DeckButton onPress={this.getDeck}>
-                    <DeckName>{this.state.decks[item].title}</DeckName>
+                  <DeckButton onPress={() => navigation.navigate('Deck', { 
+                      deckName: decks[item].title, 
+                      cardsQuantity: decks[item].questions.length })}>
+                    <DeckNameButton>{decks[item].title}</DeckNameButton>
                     <DeckCardsQuantity>
-                      {`${this.state.decks[item].questions.length} ${'cards'}`}
+                      {`${decks[item].questions.length} ${'cards'}`}
                     </DeckCardsQuantity>
                   </DeckButton>
                 }

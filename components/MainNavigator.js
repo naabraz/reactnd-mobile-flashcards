@@ -6,6 +6,7 @@ import { darkGray, lightGray, white, orange } from './style/utils/colors'
 
 import DecksList from './DecksList'
 import NewDeck from './NewDeck'
+import Deck from './Deck'
 
 const headerOptions = {
   headerStyle: {
@@ -17,12 +18,17 @@ const headerOptions = {
   }
 }
 
-const DeckStack = createStackNavigator({
+const DecksListStack = createStackNavigator({
   Decks: {
     screen: DecksList,
     navigationOptions: {
       ...headerOptions,
-      tabBarLabel: 'My Decks',
+    }
+  },
+  Deck: {
+    screen: Deck,
+    navigationOptions: {
+      ...headerOptions,
     }
   },
 })
@@ -32,14 +38,13 @@ const NewDeckStack = createStackNavigator({
     screen: NewDeck,
     navigationOptions: {
       ...headerOptions,
-      tabBarLabel: 'Add Deck',
     }
   },
 })
 
 export default MainNavigator = createBottomTabNavigator(
   {
-    ['My Decks']: DeckStack,
+    ['My Decks']: DecksListStack,
     ['New Deck']: NewDeckStack,
   },
   {
