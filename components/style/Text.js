@@ -13,9 +13,8 @@ export const DeckName = styled.Text`
 
 export const NewDeckInput = styled.TextInput`
   font-size: ${h2Size}
-  height: 50
   text-align: center
-  padding-top: 50%
+  padding-top: 30%
   padding-bottom: 10%
   color: black
 `
