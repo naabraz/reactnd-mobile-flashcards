@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { h2Size } from './utils/fontSizes'
+import { h2Size, h3Size } from './utils/fontSizes'
 
 import { white } from '../style/utils/colors'
 
@@ -28,5 +28,11 @@ export const AddDeckText = styled.Text`
 
 export const EmptyDeckText = styled.Text`
   font-size: 18px
+  text-align: center
+`
+
+export const DeckCardsQuantity = styled.Text`
+  font-size: ${h3Size}
+  color: ${white}
   text-align: center
 `

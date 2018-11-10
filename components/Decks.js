@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { fetchDecks } from '../api/DeckStorage'
 
 import { DeckList } from './style/List'
-import { DeckName, EmptyDeckText } from './style/Text'
+import { DeckName, EmptyDeckText, DeckCardsQuantity } from './style/Text'
 import { Wrapper } from './style/Wrapper'
 import { DeckButton } from './style/Button'
 
@@ -41,7 +41,11 @@ class Decks extends Component {
                 renderItem={({ item }) =>
                   <DeckButton onPress={this.getDeck}>
                     <DeckName>{this.state.decks[item].title}</DeckName>
-                  </DeckButton>}
+                    <DeckCardsQuantity>
+                      {`${this.state.decks[item].questions.length} ${'cards'}`}
+                    </DeckCardsQuantity>
+                  </DeckButton>
+                }
                 keyExtractor={(index) => index.toString()}
               />
           }

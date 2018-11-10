@@ -8,6 +8,7 @@ export const DeckButton = styled.TouchableOpacity`
   margin-bottom: 10
   width: 55%
   margin-left: 25%
+  padding: 5%
 `
 
 export const AddDeck = styled.TouchableOpacity`
