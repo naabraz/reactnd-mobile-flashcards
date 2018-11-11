@@ -21,13 +21,20 @@ class NewCard extends Component {
   }
 
   addNewCard = () => {
-    const question = {question: this.state.question, answer: this.state.answer}
-    const deckName = this.props.navigation.getParam('deckName')
+    const deck = this.props.navigation.getParam('deck')
 
-    addCard(deckName, question)
+    const question = {
+      question: this.state.question, 
+      answer: this.state.answer 
+    }
+
+    deck.questions.push(question)
+    
+    addCard(deck)
+
     this.toHome()
   }
-  
+
   render() {
     return (
       <Wrapper>

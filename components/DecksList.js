@@ -40,9 +40,7 @@ class Decks extends Component {
               <DeckList
                 data={Object.keys(decks)}
                 renderItem={({ item }) =>
-                  <DeckButton onPress={() => navigation.navigate('Deck', { 
-                      deckName: decks[item].title, 
-                      cardsQuantity: decks[item].questions.length })}>
+                  <DeckButton onPress={() => navigation.navigate('Deck', { deck: decks[item] })}>
                     <DeckNameButton>{decks[item].title}</DeckNameButton>
                     <DeckCardsQuantity>
                       {`${decks[item].questions.length} ${'cards'}`}

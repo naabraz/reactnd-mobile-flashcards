@@ -14,14 +14,15 @@ export class Deck extends Component {
 
   render() {
     const { navigation } = this.props
-    const deckName = navigation.getParam('deckName')
-    const cardsQuantity = navigation.getParam('cardsQuantity')
+    const deck = navigation.getParam('deck')
+
+    const { title, questions } = deck
 
     return(
       <Wrapper>
-        <DeckName>{deckName}</DeckName>
-        <DeckCardsQuantity style={{color: black}}>{`${cardsQuantity} cards`}</DeckCardsQuantity>
-        <AddCard onPress={() => navigation.navigate('NewCard', { deckName })}>
+        <DeckName>{title}</DeckName>
+        <DeckCardsQuantity style={{color: black}}>{`${questions.length} cards`}</DeckCardsQuantity>
+        <AddCard onPress={() => navigation.navigate('NewCard', { deck })}>
           <AddCardText>Add Card</AddCardText>
         </AddCard>
         <StartQuiz>
