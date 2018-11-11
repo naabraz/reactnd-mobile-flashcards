@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { getDeck } from '../api/DeckStorage'
+
 import { DeckName, DeckCardsQuantity, AddCardText, StartQuizText } from './style/Text'
 import { AddCard, StartQuiz } from './style/Button'
 import { Wrapper } from './style/Wrapper'
@@ -12,10 +14,24 @@ export class Deck extends Component {
     }
   }
 
+  componentDidMount() {
+    const title = this.props.navigation.getParam('deckTitle')
+
+    getDeck(title).then((deck) => {
+      this.setState({ deck })
+    })
+  }
+
+  state = {
+    deck: {
+      title: '',
+      questions: []
+    }
+  }
+
   render() {
     const { navigation } = this.props
-    const deck = navigation.getParam('deck')
-
+    const { deck } = this.state
     const { title, questions } = deck
 
     return(

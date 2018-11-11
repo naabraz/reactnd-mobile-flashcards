@@ -18,7 +18,7 @@ class NewDeck extends Component {
   }
 
   toHome = () => {
-    this.props.navigation.navigate('Decks')
+    this.props.navigation.navigate('Deck', {deckTitle: this.state.name})
   }
 
   checkDeckName = () => {

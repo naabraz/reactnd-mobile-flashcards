@@ -12,15 +12,15 @@ class Decks extends Component {
     title: 'My Decks',
   }
 
+  state = {
+    decks: {}
+  }
+
   getAllDecks = () => fetchDecks().then((decks) => this.setState({decks}))
 
   willFocusSubscription = this.props.navigation.addListener(
     'willFocus', () => this.getAllDecks()
   )
-
-  state = {
-    decks: {}
-  }
 
   componentWillUnmount() {
     willFocusSubscription.remove()
@@ -40,7 +40,7 @@ class Decks extends Component {
               <DeckList
                 data={Object.keys(decks)}
                 renderItem={({ item }) =>
-                  <DeckButton onPress={() => navigation.navigate('Deck', { deck: decks[item] })}>
+                  <DeckButton onPress={() => navigation.navigate('Deck', { deckTitle: decks[item].title })}>
                     <DeckNameButton>{decks[item].title}</DeckNameButton>
                     <DeckCardsQuantity>
                       {`${decks[item].questions.length} ${'cards'}`}

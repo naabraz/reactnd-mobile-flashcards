@@ -30,7 +30,7 @@ class NewCard extends Component {
 
     deck.questions.push(question)
     
-    addCard(deck)
+    addCard(deck.title, deck.questions)
 
     this.toHome()
   }
