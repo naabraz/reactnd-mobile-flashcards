@@ -38,10 +38,11 @@ export class Deck extends Component {
       <Wrapper>
         <DeckName>{title}</DeckName>
         <DeckCardsQuantity style={{color: black}}>{`${questions.length} cards`}</DeckCardsQuantity>
+
         <AddCard onPress={() => navigation.navigate('NewCard', { deck })}>
           <AddCardText>Add Card</AddCardText>
         </AddCard>
-        <StartQuiz>
+        <StartQuiz onPress={() => navigation.navigate('Quiz', { deck })}>
           <StartQuizText>Start Quiz</StartQuizText>
         </StartQuiz>
       </Wrapper>

@@ -13,8 +13,13 @@ const MediumButtonText = `
   font-size: 18px
 `
 
-const DefaultText = styled.Text`
+const DefaultText = `
   font-size: 18px
+  text-align: center
+`
+
+const MediumText = `
+  font-size: 30px
   text-align: center
 `
 
@@ -88,4 +93,28 @@ export const StartQuizText = styled.Text`
   ${ButtonText}
   ${MediumButtonText}
   padding: 5%
+`
+
+export const QuestionText = styled.Text`
+  ${MediumText}
+  margin-top: 10%
+  margin-bottom: 10%
+`
+
+export const QuestionAnswerOption = styled.Text`
+  ${MediumButtonText}
+  padding: 5%
+  color: ${white}
+  text-align: center
+`
+export const ShowAnswer = styled.Text`
+  ${MediumButtonText}
+  padding: 5%
+  color: red
+  text-align: center
+`
+
+export const Answer = styled.Text`
+  text-align: center
+  font-size: 24px
 `

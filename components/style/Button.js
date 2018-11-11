@@ -50,3 +50,21 @@ export const AddCardQuestion = styled.TouchableOpacity`
   ${MediumButton}
   ${CenteredButton}
 `
+
+export const QuizCorrectButton = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+  background: green
+`
+
+export const QuizIncorrectButton = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+  background: red
+`
+export const QuizShowAnswer = styled.TouchableOpacity`
+  ${MediumButton}
+  ${CenteredButton}
+`
