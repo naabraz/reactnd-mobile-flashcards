@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Picker } from 'react-native'
 
 import { addCard } from '../api/DeckStorage'
 
@@ -24,12 +25,12 @@ class NewCard extends Component {
     const deck = this.props.navigation.getParam('deck')
 
     const question = {
-      question: this.state.question, 
-      answer: this.state.answer 
+      question: this.state.question,
+      answer: this.state.answer
     }
 
     deck.questions.push(question)
-    
+
     addCard(deck.title, deck.questions)
 
     this.toHome()
@@ -38,17 +39,18 @@ class NewCard extends Component {
   render() {
     return (
       <Wrapper>
-        <NewCardInput 
+        <NewCardInput
           placeholder={'Question'}
           value={this.state.question}
           onChangeText={(question) => this.setState({question})}
         />
-        <NewCardInput
-          style={{marginBottom: 10}}
-          placeholder={'Answer'}
-          value={this.state.answer}
-          onChangeText={(answer) => this.setState({answer})}
-        />
+        <Picker
+          selectedValue={this.state.answer}
+          style={{ height: 50, width: 100 }}
+          onValueChange={(itemValue, itemIndex) => this.setState({answer: itemValue})}>
+          <Picker.Item label="Correct" value="correct" />
+          <Picker.Item label="Incorrect" value="incorrect" />
+        </Picker>
         <AddCardQuestion onPress={this.addNewCard}>
           <AddCardQuestionText>
             Add Card
