@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { TouchableOpacity, Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 import { Wrapper } from './style/Wrapper'
 import { QuestionText, QuestionAnswerOption, ShowAnswer, Answer } from './style/Text'
@@ -20,15 +20,20 @@ class Quiz extends Component {
     return (
       <Wrapper>
         <Text>{`${number} / ${deck.questions.length}`}</Text>
-        <QuestionText>
-          {deck.questions[number].question}
-        </QuestionText>
 
-        {showAnswer 
-          ? <Answer>{deck.questions[number].answer}</Answer>
-          : <QuizShowAnswer onPress={() => this.setState({showAnswer: !showAnswer})}>
+        {showAnswer
+          ?
+          <Answer>{deck.questions[number].answer}</Answer>
+          :
+          <View>
+            <QuestionText>
+              {deck.questions[number].question}
+            </QuestionText>
+
+            <QuizShowAnswer onPress={() => this.setState({showAnswer: !showAnswer})}>
               <ShowAnswer>Show Answer</ShowAnswer>
             </QuizShowAnswer>
+          </View>
         }
 
         <QuizCorrectButton onPress={() => this.setState({ number: number + 1, showAnswer: false })}>
