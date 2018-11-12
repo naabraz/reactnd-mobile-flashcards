@@ -25,7 +25,7 @@ const MediumText = `
 
 export const DeckNameButton = styled.Text`
   ${ButtonText}
-  font-size: ${h2Size}  
+  font-size: ${h2Size}
   padding: 5%
 `
 
@@ -117,4 +117,9 @@ export const ShowAnswer = styled.Text`
 export const Answer = styled.Text`
   text-align: center
   font-size: 24px
+`
+
+export const SelectAnswer = styled.Picker`
+  border: solid 1px ${orange}
+  width: 100%
 `

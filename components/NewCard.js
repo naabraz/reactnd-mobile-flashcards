@@ -4,7 +4,7 @@ import { Picker } from 'react-native'
 import { addCard } from '../api/DeckStorage'
 
 import { Wrapper } from './style/Wrapper'
-import { NewCardInput, AddCardQuestionText } from './style/Text'
+import { NewCardInput, AddCardQuestionText, SelectAnswer } from './style/Text'
 import { AddCardQuestion } from './style/Button'
 
 class NewCard extends Component {
@@ -44,13 +44,12 @@ class NewCard extends Component {
           value={this.state.question}
           onChangeText={(question) => this.setState({question})}
         />
-        <Picker
+        <SelectAnswer
           selectedValue={this.state.answer}
-          style={{ height: 50, width: 100 }}
           onValueChange={(itemValue, itemIndex) => this.setState({answer: itemValue})}>
-          <Picker.Item label="Correct" value="correct" />
-          <Picker.Item label="Incorrect" value="incorrect" />
-        </Picker>
+          <SelectAnswer.Item label="Correct" value="correct" />
+          <SelectAnswer.Item label="Incorrect" value="incorrect" />
+        </SelectAnswer>
         <AddCardQuestion onPress={this.addNewCard}>
           <AddCardQuestionText>
             Add Card
