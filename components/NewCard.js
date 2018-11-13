@@ -1,24 +1,53 @@
-import React, { Component } from 'react'
-import { Picker } from 'react-native'
+import React,
+{
+  Component
+} from 'react'
 
-import { addCard } from '../api/DeckStorage'
+import {
+  addCard,
+} from '../api/DeckStorage'
 
-import { Wrapper } from './style/Wrapper'
-import { NewCardInput, AddCardQuestionText, SelectAnswer } from './style/Text'
-import { AddCardQuestion } from './style/Button'
+import {
+   Wrapper,
+} from './style/Wrapper'
+
+import {
+  NewCardInput,
+  AddCardQuestionText,
+  SelectAnswer,
+  styles
+} from './style/Text'
+
+import {
+  AddCardQuestion,
+} from './style/Button'
 
 class NewCard extends Component {
   static navigationOptions = {
-    title: 'Add Card'
+    title: 'Add Card',
    }
 
    state = {
      question: '',
-     answer: ''
+     questionError: false,
+     answer: '',
+     answerError: false,
    }
 
   toHome = () => {
     this.props.navigation.navigate('Decks')
+  }
+
+  checkCard = () => {
+    if (this.state.question.trim() === '') {
+      this.setState(() => ({ questionError: true }))
+    }
+    else if (this.state.answer.trim() === '') {
+      this.setState(() => ({ answerError: true }))
+    }
+    else {
+      this.addNewCard()
+    }
   }
 
   addNewCard = () => {
@@ -26,7 +55,7 @@ class NewCard extends Component {
 
     const question = {
       question: this.state.question,
-      answer: this.state.answer
+      answer: this.state.answer,
     }
 
     deck.questions.push(question)
@@ -37,24 +66,33 @@ class NewCard extends Component {
   }
 
   render() {
+    const {
+      questionError,
+      answerError,
+    } = this.state
+
     return (
       <Wrapper>
         <NewCardInput
           placeholder={'Question'}
           value={this.state.question}
-          onChangeText={(question) => this.setState({question})}
+          onChangeText={(question) => this.setState({question, questionError: false})}
+          style={[questionError ? styles.invalid : '']}
         />
+
         <SelectAnswer
           selectedValue={this.state.answer}
-          onValueChange={(itemValue, itemIndex) => this.setState({answer: itemValue})}>
+          onValueChange={(itemValue) => this.setState({answer: itemValue})}
+          style={[answerError ? styles.invalid : '']}>
+          <SelectAnswer.Item label="Answer" value="" />
           <SelectAnswer.Item label="Correct" value="correct" />
           <SelectAnswer.Item label="Incorrect" value="incorrect" />
         </SelectAnswer>
-        <AddCardQuestion onPress={this.addNewCard}>
-          <AddCardQuestionText>
-            Add Card
-          </AddCardQuestionText>
+
+        <AddCardQuestion onPress={this.checkCard}>
+          <AddCardQuestionText>Add Card</AddCardQuestionText>
         </AddCardQuestion>
+
       </Wrapper>
     )
   }

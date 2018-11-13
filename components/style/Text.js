@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { StyleSheet } from 'react-native'
 
 import { h2Size, h3Size } from './utils/fontSizes'
 
@@ -123,3 +124,9 @@ export const SelectAnswer = styled.Picker`
   border: solid 1px ${orange}
   width: 100%
 `
+
+export const styles = StyleSheet.create({
+  invalid: {
+      borderColor: 'red',
+  },
+})
