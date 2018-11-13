@@ -21,7 +21,8 @@ import {
 import {
   QuizCorrectButton,
   QuizIncorrectButton,
-  QuizShowAnswer
+  QuizShowAnswer,
+  styles
 } from './style/Button'
 
 class Quiz extends Component {
@@ -59,13 +60,15 @@ class Quiz extends Component {
 
         <QuizCorrectButton
           onPress={() => this.setState({ number: number + 1, showAnswer: false })}
-          disabled={showAnswer}>
+          disabled={showAnswer}
+          style={[showAnswer && deck.questions[number].answer !== 'correct' ? styles.disabledCorrect : '']}>
           <QuestionAnswerOption>Correct</QuestionAnswerOption>
         </QuizCorrectButton>
 
         <QuizIncorrectButton
           onPress={() => this.setState({ number: number + 1, showAnswer: false })}
-          disabled={showAnswer}>
+          disabled={showAnswer}
+          style={[showAnswer && deck.questions[number].answer !== 'incorrect' ? styles.disabledIncorrect : '']}>
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
         </QuizIncorrectButton>
       </Wrapper>

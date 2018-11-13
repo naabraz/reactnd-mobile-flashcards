@@ -1,7 +1,11 @@
 import styled from 'styled-components/native'
 
 import {
-  orange
+  StyleSheet
+} from 'react-native'
+
+import {
+  orange,
 } from '../style/utils/colors'
 
 const Button = `
@@ -57,16 +61,25 @@ export const QuizCorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
-  background: green
+  background: rgba(43, 119, 34, 1)
 `
 
 export const QuizIncorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
-  background: red
+  background: rgba(168, 0, 0, 1)
 `
 export const QuizShowAnswer = styled.TouchableOpacity `
   ${MediumButton}
   ${CenteredButton}
 `
+
+export const styles = StyleSheet.create({
+  disabledCorrect: {
+    backgroundColor: 'rgba(43, 119, 34, 0.5)'
+  },
+  disabledIncorrect: {
+    backgroundColor: 'rgba(168, 0, 0, 0.5)'
+  },
+})
