@@ -1,10 +1,28 @@
-import React, { Component } from 'react'
+import React, {
+  Component
+} from 'react'
 
-import { Text, View } from 'react-native'
+import {
+  Text,
+  View
+} from 'react-native'
 
-import { Wrapper } from './style/Wrapper'
-import { QuestionText, QuestionAnswerOption, ShowAnswer, Answer } from './style/Text'
-import { QuizCorrectButton, QuizIncorrectButton, QuizShowAnswer } from './style/Button'
+import {
+  Wrapper
+} from './style/Wrapper'
+
+import {
+  QuestionText,
+  QuestionAnswerOption,
+  ShowAnswer,
+  Answer
+} from './style/Text'
+
+import {
+  QuizCorrectButton,
+  QuizIncorrectButton,
+  QuizShowAnswer
+} from './style/Button'
 
 class Quiz extends Component {
   state = {
@@ -15,7 +33,10 @@ class Quiz extends Component {
   render() {
     const deck = this.props.navigation.getParam('deck')
 
-    const { number, showAnswer } = this.state
+    const {
+      number,
+      showAnswer,
+    } = this.state
 
     return (
       <Wrapper>
@@ -30,17 +51,21 @@ class Quiz extends Component {
               {deck.questions[number].question}
             </QuestionText>
 
-            <QuizShowAnswer onPress={() => this.setState({showAnswer: !showAnswer})}>
+            <QuizShowAnswer onPress={() => this.setState({ showAnswer: !showAnswer })}>
               <ShowAnswer>Show Answer</ShowAnswer>
             </QuizShowAnswer>
           </View>
         }
 
-        <QuizCorrectButton onPress={() => this.setState({ number: number + 1, showAnswer: false })}>
+        <QuizCorrectButton
+          onPress={() => this.setState({ number: number + 1, showAnswer: false })}
+          disabled={showAnswer}>
           <QuestionAnswerOption>Correct</QuestionAnswerOption>
         </QuizCorrectButton>
 
-        <QuizIncorrectButton onPress={() => this.setState({ number: number + 1, showAnswer: false })}>
+        <QuizIncorrectButton
+          onPress={() => this.setState({ number: number + 1, showAnswer: false })}
+          disabled={showAnswer}>
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
         </QuizIncorrectButton>
       </Wrapper>

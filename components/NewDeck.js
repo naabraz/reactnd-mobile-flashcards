@@ -1,14 +1,13 @@
-import React,
-  {
-    Component
-  } from 'react'
+import React, {
+  Component,
+} from 'react'
 
 import {
-  addDeck
+  addDeck,
 } from '../api/DeckStorage'
 
 import {
-  Wrapper
+  Wrapper,
 } from './style/Wrapper'
 
 import {

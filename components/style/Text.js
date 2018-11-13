@@ -1,9 +1,19 @@
 import styled from 'styled-components/native'
-import { StyleSheet } from 'react-native'
 
-import { h2Size, h3Size } from './utils/fontSizes'
+import {
+  StyleSheet
+} from 'react-native'
 
-import { white, black, orange } from '../style/utils/colors'
+import {
+  h2Size,
+  h3Size
+} from './utils/fontSizes'
+
+import {
+  white,
+  black,
+  orange
+} from '../style/utils/colors'
 
 const ButtonText = `
   text-align: center
@@ -108,6 +118,7 @@ export const QuestionAnswerOption = styled.Text`
   color: ${white}
   text-align: center
 `
+
 export const ShowAnswer = styled.Text`
   ${MediumButtonText}
   padding: 5%

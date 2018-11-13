@@ -1,11 +1,28 @@
-import React, { Component } from 'react'
+import React, {
+  Component,
+} from 'react'
 
-import { fetchDecks } from '../api/DeckStorage'
+import {
+  fetchDecks,
+} from '../api/DeckStorage'
 
-import { DeckList } from './style/List'
-import { DeckNameButton, EmptyDeckText, DeckCardsQuantity } from './style/Text'
-import { Wrapper } from './style/Wrapper'
-import { DeckButton } from './style/Button'
+import {
+  DeckList,
+} from './style/List'
+
+import {
+  DeckNameButton,
+  EmptyDeckText,
+  DeckCardsQuantity,
+} from './style/Text'
+
+import {
+  Wrapper,
+} from './style/Wrapper'
+
+import {
+  DeckButton,
+} from './style/Button'
 
 class Decks extends Component {
   static navigationOptions = {
@@ -28,7 +45,10 @@ class Decks extends Component {
 
   render() {
     const decks = this.state.decks
-    const { navigation } = this.props
+
+    const {
+      navigation,
+    } = this.props
 
     return (
       <Wrapper>

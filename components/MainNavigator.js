@@ -1,8 +1,21 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
-import { darkGray, lightGray, white, orange } from './style/utils/colors'
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+} from 'react-navigation'
+
+import {
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from '@expo/vector-icons'
+
+import {
+  darkGray,
+  lightGray,
+  white,
+  orange,
+} from './style/utils/colors'
 
 import DecksList from './DecksList'
 import NewDeck from './NewDeck'
@@ -66,8 +79,8 @@ export default MainNavigator = createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state
 
-        const icons = routeName === 'NewDeck' ? 
-          <MaterialIcons name={'add-box'} size={30} color={tintColor} /> : 
+        const icons = routeName === 'NewDeck' ?
+          <MaterialIcons name={'add-box'} size={30} color={tintColor} /> :
           <MaterialCommunityIcons name={'cards'} size={30} color={tintColor} />
 
         return icons

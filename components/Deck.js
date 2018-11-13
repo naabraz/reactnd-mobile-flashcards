@@ -1,11 +1,30 @@
-import React, { Component } from 'react'
+import React, {
+  Component,
+} from 'react'
 
-import { getDeck } from '../api/DeckStorage'
+import {
+  getDeck,
+} from '../api/DeckStorage'
 
-import { DeckName, DeckCardsQuantity, AddCardText, StartQuizText } from './style/Text'
-import { AddCard, StartQuiz } from './style/Button'
-import { Wrapper } from './style/Wrapper'
-import { black } from './style/utils/colors'
+import {
+  DeckName,
+  DeckCardsQuantity,
+  AddCardText,
+  StartQuizText,
+} from './style/Text'
+
+import {
+  AddCard,
+  StartQuiz,
+} from './style/Button'
+
+import {
+  Wrapper,
+} from './style/Wrapper'
+
+import {
+  black,
+} from './style/utils/colors'
 
 export class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -25,14 +44,23 @@ export class Deck extends Component {
   state = {
     deck: {
       title: '',
-      questions: []
+      questions: [],
     }
   }
 
   render() {
-    const { navigation } = this.props
-    const { deck } = this.state
-    const { title, questions } = deck
+    const {
+      navigation,
+    } = this.props
+
+    const {
+      deck,
+    } = this.state
+
+    const {
+      title,
+      questions,
+    } = deck
 
     return(
       <Wrapper>

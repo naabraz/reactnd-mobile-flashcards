@@ -1,6 +1,13 @@
 import React from 'react'
-import { View, StatusBar } from 'react-native'
-import { Constants } from 'expo'
+
+import {
+  View,
+  StatusBar,
+} from 'react-native'
+
+import {
+  Constants,
+} from 'expo'
 
 export default function MainStatusBar ({ backgroundColor, ...props }) {
   return (

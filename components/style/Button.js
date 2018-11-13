@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 
-import { orange } from '../style/utils/colors'
+import {
+  orange
+} from '../style/utils/colors'
 
 const Button = `
   background: ${orange}
@@ -22,49 +24,49 @@ const CenteredButton = `
   margin-left: 25%
 `
 
-export const DeckButton = styled.TouchableOpacity`
+export const DeckButton = styled.TouchableOpacity `
   ${Button}
   ${BigButton}
 `
 
-export const AddDeck = styled.TouchableOpacity`
+export const AddDeck = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
 `
 
-export const AddCard = styled.TouchableOpacity`
+export const AddCard = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
 `
 
-export const StartQuiz = styled.TouchableOpacity`
+export const StartQuiz = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
 `
 
-export const AddCardQuestion = styled.TouchableOpacity`
+export const AddCardQuestion = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
 `
 
-export const QuizCorrectButton = styled.TouchableOpacity`
+export const QuizCorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
   background: green
 `
 
-export const QuizIncorrectButton = styled.TouchableOpacity`
+export const QuizIncorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
   background: red
 `
-export const QuizShowAnswer = styled.TouchableOpacity`
+export const QuizShowAnswer = styled.TouchableOpacity `
   ${MediumButton}
   ${CenteredButton}
 `
