@@ -29,6 +29,15 @@ class Quiz extends Component {
   state = {
     number: 0,
     showAnswer: false,
+    points: 0,
+  }
+
+  nextQuestion(number) {
+    const deck = this.props.navigation.getParam('deck')
+
+    number + 1 < deck.questions.length
+      ? this.setState({ number: number + 1, showAnswer: false })
+      : this.props.navigation.navigate('Deck', { deckTitle: deck.title })
   }
 
   render() {
@@ -41,34 +50,38 @@ class Quiz extends Component {
 
     return (
       <Wrapper>
-        <Text>{`${number} / ${deck.questions.length}`}</Text>
+        <Text>{`${number + 1} / ${deck.questions.length}`}</Text>
 
         {showAnswer
           ?
-          <Answer>{deck.questions[number].answer}</Answer>
+            <Answer style={{marginBottom: 25}}>
+              {`${deck.questions[number].answer}!`}
+            </Answer>
           :
-          <View>
-            <QuestionText>
-              {deck.questions[number].question}
-            </QuestionText>
+            <View>
+              <QuestionText>
+                {deck.questions[number].question}
+              </QuestionText>
 
-            <QuizShowAnswer onPress={() => this.setState({ showAnswer: !showAnswer })}>
-              <ShowAnswer>Show Answer</ShowAnswer>
-            </QuizShowAnswer>
-          </View>
+              <QuizShowAnswer 
+                onPress={() => this.setState({ showAnswer: !showAnswer })}
+                style={{marginBottom: 25}}>
+                <ShowAnswer>Answer</ShowAnswer>
+              </QuizShowAnswer>
+            </View>
         }
 
         <QuizCorrectButton
-          onPress={() => this.setState({ number: number + 1, showAnswer: false })}
+          onPress={() => this.nextQuestion(number)}
           disabled={showAnswer}
-          style={[showAnswer && deck.questions[number].answer !== 'correct' ? styles.disabledCorrect : '']}>
+          style={[showAnswer && deck.questions[number].answer !== 'Correct' ? styles.disabledCorrect : '']}>
           <QuestionAnswerOption>Correct</QuestionAnswerOption>
         </QuizCorrectButton>
 
         <QuizIncorrectButton
-          onPress={() => this.setState({ number: number + 1, showAnswer: false })}
+          onPress={() => this.nextQuestion(number)}
           disabled={showAnswer}
-          style={[showAnswer && deck.questions[number].answer !== 'incorrect' ? styles.disabledIncorrect : '']}>
+          style={[showAnswer && deck.questions[number].answer !== 'Incorrect' ? styles.disabledIncorrect : '']}>
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
         </QuizIncorrectButton>
       </Wrapper>

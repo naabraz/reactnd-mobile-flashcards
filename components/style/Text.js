@@ -134,10 +134,11 @@ export const Answer = styled.Text`
 export const SelectAnswer = styled.Picker`
   border: solid 1px ${orange}
   width: 100%
+  margin-top: 10%
 `
 
 export const styles = StyleSheet.create({
   invalid: {
-      borderColor: 'red',
+    borderColor: 'red',
   },
 })

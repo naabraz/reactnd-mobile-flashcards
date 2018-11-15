@@ -84,8 +84,8 @@ class NewCard extends Component {
           onValueChange={(itemValue) => this.setState({answer: itemValue})}
           style={[answerError ? styles.invalid : '']}>
           <SelectAnswer.Item label="Answer" value="" />
-          <SelectAnswer.Item label="Correct" value="correct" />
-          <SelectAnswer.Item label="Incorrect" value="incorrect" />
+          <SelectAnswer.Item label="Correct" value="Correct" />
+          <SelectAnswer.Item label="Incorrect" value="Incorrect" />
         </SelectAnswer>
 
         <AddCardQuestion onPress={this.checkCard}>
