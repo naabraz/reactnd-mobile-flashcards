@@ -24,7 +24,7 @@ import {
   DeckButton,
 } from './style/Button'
 
-class Decks extends Component {
+class DecksList extends Component {
   static navigationOptions = {
     title: 'My Decks',
   }
@@ -75,4 +75,4 @@ class Decks extends Component {
   }
 }
 
-export default Decks
+export default DecksList
