@@ -52,12 +52,16 @@ class Quiz extends Component {
 
     number + 1 < this.deck.questions.length
     ? this.setState({ number: number + 1, showAnswer: false })
-    : this.props.navigation.navigate('QuizResult', { result: this.state.points })
+    : this.props.navigation.navigate('QuizResult', { 
+      result: this.state.points, 
+      totalQuestions: this.deck.questions.length,
+      deck: this.deck
+    })
   }
 
   render() {
     const deck = this.deck
-    
+    console.log('hhshhe', deck)
     const {
       number,
       showAnswer,

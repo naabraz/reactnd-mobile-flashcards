@@ -137,6 +137,25 @@ export const SelectAnswer = styled.Picker`
   margin-top: 10%
 `
 
+export const QuizResultText = styled.Text`
+  font-size: 24px
+  text-align: center
+  margin-top: 50%
+  margin-bottom: 10%
+`
+
+export const RestartQuizText = styled.Text`
+  ${ButtonText}
+  ${MediumButtonText}
+  padding: 5%
+`
+
+export const BackToDeckText = styled.Text`
+  ${ButtonText}
+  ${MediumButtonText}
+  padding: 5%
+`
+
 export const styles = StyleSheet.create({
   invalid: {
     borderColor: 'red',
