@@ -22,6 +22,7 @@ import NewDeck from './NewDeck'
 import Deck from './Deck'
 import NewCard from './NewCard'
 import Quiz from './Quiz'
+import QuizResult from './QuizResult'
 
 const headerOptions = {
   headerStyle: {
@@ -54,6 +55,12 @@ const DecksListStack = createStackNavigator({
   },
   Quiz: {
     screen: Quiz,
+    navigationOptions: {
+      ...headerOptions,
+    }
+  },
+  QuizResult: {
+    screen: QuizResult,
     navigationOptions: {
       ...headerOptions,
     }
