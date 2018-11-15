@@ -32,8 +32,11 @@ class Quiz extends Component {
     points: 0,
   }
 
-  nextQuestion(number) {
+  nextQuestion(option) {
     const deck = this.props.navigation.getParam('deck')
+    const { number } = this.state
+
+    if (deck.questions[number].answer === option) this.setState({ points: points + 1})
 
     number + 1 < deck.questions.length
       ? this.setState({ number: number + 1, showAnswer: false })
@@ -72,14 +75,14 @@ class Quiz extends Component {
         }
 
         <QuizCorrectButton
-          onPress={() => this.nextQuestion(number)}
+          onPress={() => this.nextQuestion('Correct')}
           disabled={showAnswer}
           style={[showAnswer && deck.questions[number].answer !== 'Correct' ? styles.disabledCorrect : '']}>
           <QuestionAnswerOption>Correct</QuestionAnswerOption>
         </QuizCorrectButton>
 
         <QuizIncorrectButton
-          onPress={() => this.nextQuestion(number)}
+          onPress={() => this.nextQuestion('Incorrect')}
           disabled={showAnswer}
           style={[showAnswer && deck.questions[number].answer !== 'Incorrect' ? styles.disabledIncorrect : '']}>
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
