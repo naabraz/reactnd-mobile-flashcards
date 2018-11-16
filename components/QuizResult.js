@@ -37,7 +37,7 @@ class QuizResult extends Component {
       <Wrapper>
         <QuizResultText>You got {percentage}% of the questions right!</QuizResultText>
 
-        <RestartQuizButton onPress={() => navigation.navigate('Quiz', { deck})}>
+        <RestartQuizButton onPress={() => navigation.navigate('Quiz', { deck })}>
           <RestartQuizText>Restart Quiz</RestartQuizText>
         </RestartQuizButton>
 

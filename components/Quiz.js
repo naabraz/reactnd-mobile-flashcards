@@ -34,6 +34,16 @@ class Quiz extends Component {
 
   deck = this.props.navigation.getParam('deck')
 
+  willFocusSubscription = this.props.navigation.addListener(
+    'willFocus', () => { 
+      this.setState({ number: 0, points: 0 })
+    }
+  )
+
+  componentWillUnmount() {
+    willFocusSubscription.remove()
+  }
+
   sendAnswer(option) {
     const {
       number,
@@ -61,7 +71,7 @@ class Quiz extends Component {
 
   render() {
     const deck = this.deck
-    console.log('hhshhe', deck)
+
     const {
       number,
       showAnswer,
