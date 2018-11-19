@@ -26,7 +26,6 @@ class DecksList extends Component {
 
   render() {
     const decks = this.state.decks
-
     const { navigation } = this.props
 
     return (

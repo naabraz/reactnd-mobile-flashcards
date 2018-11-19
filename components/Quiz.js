@@ -30,7 +30,6 @@ class Quiz extends Component {
 
   toNextQuestion() {
     const { number } = this.state
-
     const quizResultParams = { result: this.state.points, totalQuestions: this.deck.questions.length, deck: this.deck }
 
     number + 1 < this.deck.questions.length ?
@@ -41,9 +40,7 @@ class Quiz extends Component {
 
   render() {
     const deck = this.deck
-
     const { number, showAnswer, isLastQuestion } = this.state
-
     const answer = deck.questions[number].answer === 'Correct' ? 'Yes!' : 'No!'
 
     return (
@@ -58,7 +55,7 @@ class Quiz extends Component {
             <QuizShowAnswer 
               onPress={() => this.setState({ showAnswer: !showAnswer })}
               style={{marginBottom: 25}}>
-              <ShowAnswer>Answer</ShowAnswer>
+              <ShowAnswer>Show Answer</ShowAnswer>
             </QuizShowAnswer>
           </View>
         }

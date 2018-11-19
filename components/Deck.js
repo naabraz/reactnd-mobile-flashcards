@@ -36,9 +36,7 @@ export class Deck extends Component {
 
   render() {
     const { navigation } = this.props
-
     const { deck } = this.state
-
     const { title, questions } = deck
 
     return(
@@ -51,7 +49,7 @@ export class Deck extends Component {
         </AddCard>
         {questions.length > 0 && (
           <StartQuiz onPress={() => navigation.navigate('Quiz', { deck })}>
-            <StartQuizText>Start Quiz</StartQuizText>
+            <StartQuizText>Start a Quiz</StartQuizText>
           </StartQuiz>)
         }
       </Wrapper>
