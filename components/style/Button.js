@@ -93,6 +93,12 @@ export const QuizNextQuestionButton = styled.TouchableOpacity`
   ${CenteredButton}
 `
 
+export const QuizShowAnswerButton = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+`
+
 export const styles = StyleSheet.create({
   disabled: {
     display: 'none'

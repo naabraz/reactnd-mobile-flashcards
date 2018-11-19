@@ -160,6 +160,14 @@ export const NextQuestionText = styled.Text`
   padding: 5%
 `
 
+export const QuizShowAnswerText = styled.Text`
+  ${ButtonText}
+  ${MediumButtonText}
+  padding: 5%
+  color: ${white}
+  text-align: center
+`
+
 export const styles = StyleSheet.create({
   invalid: {
     borderColor: 'red',
