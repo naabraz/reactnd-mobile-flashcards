@@ -111,8 +111,7 @@ export const StartQuizText = styled.Text`
 
 export const QuestionText = styled.Text`
   ${MediumText}
-  margin-top: 10%
-  margin-bottom: 10%
+  padding: 10%
 `
 
 export const QuestionAnswerOption = styled.Text`

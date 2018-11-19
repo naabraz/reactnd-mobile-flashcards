@@ -11,7 +11,10 @@ class NewDeck extends Component {
     title: 'New Deck',
   }
 
-  state = { name: '', nameError: false}
+  state = { 
+    name: '', 
+    nameError: false
+  }
 
   toDeck = () => this.props.navigation.navigate('Deck', { deckTitle: this.state.name })
 

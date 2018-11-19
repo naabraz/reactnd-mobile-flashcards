@@ -12,7 +12,9 @@ class DecksList extends Component {
     title: 'My Decks',
   }
 
-  state = { decks: { } }
+  state = { 
+    decks: { } 
+  }
 
   getAllDecks = () => fetchDecks().then((decks) => this.setState({decks}))
 

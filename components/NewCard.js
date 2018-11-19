@@ -11,7 +11,11 @@ class NewCard extends Component {
     title: 'Add Card',
    }
 
-  state = { question: '', questionError: false, answer: 'Correct' }
+  state = { 
+    question: '', 
+    questionError: false, 
+    answer: 'Correct' 
+  }
 
   deck = this.props.navigation.getParam('deck')
 
@@ -20,7 +24,10 @@ class NewCard extends Component {
   checkCard = () => this.state.question.trim() === '' ? this.setState(() => ({ questionError: true })) : this.addNewCard()
 
   addNewCard = () => {
-    const question = { question: this.state.question, answer: this.state.answer }
+    const question = { 
+      question: this.state.question, 
+      answer: this.state.answer 
+    }
 
     this.deck.questions.push(question)
 
