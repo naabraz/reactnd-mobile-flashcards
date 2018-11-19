@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { fetchDecks } from '../api/DeckStorage'
+import { fetchDecks, removeDeck } from '../api/DeckStorage'
 
 import { DeckList } from './style/List'
 import { DeckNameButton, EmptyDeckText, DeckCardsQuantity } from './style/Text'
@@ -30,7 +30,7 @@ class DecksList extends Component {
 
     return (
       <Wrapper>{ decks === null ?
-        <EmptyDeckText>No Decks were found</EmptyDeckText> :
+        <EmptyDeckText>No Decks found! Try adding a new deck!</EmptyDeckText> :
         <DeckList
           data={Object.keys(decks)}
           renderItem={({ item }) =>

@@ -72,6 +72,9 @@ export const AddDeckText = styled.Text`
 
 export const EmptyDeckText = styled.Text`
   ${DefaultText}
+  font-size: 32px
+  margin-top: 25%
+  padding: 10%
 `
 
 export const DeckCardsQuantity = styled.Text`
