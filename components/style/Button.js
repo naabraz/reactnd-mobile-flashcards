@@ -94,10 +94,7 @@ export const QuizNextQuestionButton = styled.TouchableOpacity`
 `
 
 export const styles = StyleSheet.create({
-  disabledCorrect: {
-    backgroundColor: 'rgba(43, 119, 34, 0.5)'
-  },
-  disabledIncorrect: {
-    backgroundColor: 'rgba(168, 0, 0, 0.5)'
+  disabled: {
+    display: 'none'
   },
 })

@@ -26,12 +26,11 @@ class NewCard extends Component {
     title: 'Add Card',
    }
 
-   state = {
-     question: '',
-     questionError: false,
-     answer: '',
-     answerError: false,
-   }
+  state = {
+    question: '',
+    questionError: false,
+    answer: '',
+  }
 
   toHome = () => {
     this.props.navigation.navigate('Decks')
@@ -65,25 +64,19 @@ class NewCard extends Component {
   }
 
   render() {
-    const {
-      questionError,
-      answerError,
-    } = this.state
+    const { questionError } = this.state
 
     return (
       <Wrapper>
         <NewCardInput
           placeholder={'Question'}
           value={this.state.question}
-          onChangeText={(question) => this.setState({question, questionError: false})}
-          style={[questionError ? styles.invalid : '']}
-        />
+          onChangeText={(question) => this.setState({ question, questionError: false })}
+          style={[questionError ? styles.invalid : '']} />
 
         <SelectAnswer
           selectedValue={this.state.answer}
-          onValueChange={(itemValue) => this.setState({answer: itemValue})}
-          style={[answerError ? styles.invalid : '']}>
-          <SelectAnswer.Item label="Answer" value="" />
+          onValueChange={(itemValue) => this.setState({answer: itemValue})}>
           <SelectAnswer.Item label="Correct" value="Correct" />
           <SelectAnswer.Item label="Incorrect" value="Incorrect" />
         </SelectAnswer>

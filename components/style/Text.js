@@ -129,6 +129,7 @@ export const ShowAnswer = styled.Text`
 export const Answer = styled.Text`
   text-align: center
   font-size: 24px
+  padding: 10%
 `
 
 export const SelectAnswer = styled.Picker`
