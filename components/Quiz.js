@@ -33,13 +33,14 @@ class Quiz extends Component {
     showAnswer: false,
     points: 0,
     isLastQuestion: false,
+    rightAnswer: false,
   }
 
   deck = this.props.navigation.getParam('deck')
 
   willFocusSubscription = this.props.navigation.addListener(
     'willFocus', () => { 
-      this.setState({ number: 0, points: 0, showAnswer: false, isLastQuestion: false })
+      this.setState({ number: 0, points: 0, showAnswer: false, isLastQuestion: false, rightAnswer: false })
     }
   )
 
@@ -59,13 +60,15 @@ class Quiz extends Component {
       number,
     } = this.state
 
+    const quizResultParams = { 
+      result: this.state.points, 
+      totalQuestions: this.deck.questions.length,
+      deck: this.deck,
+    }
+
     number + 1 < this.deck.questions.length
-    ? this.setState({ number: number + 1, showAnswer: false })
-    : this.props.navigation.navigate('QuizResult', { 
-        result: this.state.points, 
-        totalQuestions: this.deck.questions.length,
-        deck: this.deck
-      })
+    ? this.setState({ number: number + 1, showAnswer: false, rightAnswer: true })
+    : this.props.navigation.navigate('QuizResult', quizResultParams)
       this.setState({ isLastQuestion: true })
   }
 
@@ -76,7 +79,10 @@ class Quiz extends Component {
       number,
       showAnswer,
       isLastQuestion,
+      rightAnswer,
     } = this.state
+
+    const response = rightAnswer ? 'You are right!' : 'You are wrong!'
 
     return (
       <Wrapper>
@@ -84,14 +90,10 @@ class Quiz extends Component {
 
         {showAnswer
           ?
-            <Answer>
-              {`${deck.questions[number].answer}!`}
-            </Answer>
+            <Answer>{`${response} The answer is: ${deck.questions[number].answer}!`}</Answer>
           :
             <View>
-              <QuestionText>
-                {deck.questions[number].question}
-              </QuestionText>
+              <QuestionText>{deck.questions[number].question}</QuestionText>
 
               <QuizShowAnswer 
                 onPress={() => this.setState({ showAnswer: !showAnswer })}
@@ -115,11 +117,10 @@ class Quiz extends Component {
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
         </QuizIncorrectButton>
 
-        { showAnswer && (
-            <QuizNextQuestionButton onPress={() => this.toNextQuestion()}>
-              <NextQuestionText>{`${!isLastQuestion ? 'Next Question' : 'See Result'}`}</NextQuestionText>
-            </QuizNextQuestionButton>
-          )
+        {showAnswer && (
+          <QuizNextQuestionButton onPress={() => this.toNextQuestion()}>
+            <NextQuestionText>{`${!isLastQuestion ? 'Next Question' : 'See Result'}`}</NextQuestionText>
+          </QuizNextQuestionButton>)
         }
       </Wrapper>
     )
