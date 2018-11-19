@@ -156,6 +156,12 @@ export const BackToDeckText = styled.Text`
   padding: 5%
 `
 
+export const NextQuestionText = styled.Text`
+  ${ButtonText}
+  ${MediumButtonText}
+  padding: 5%
+`
+
 export const styles = StyleSheet.create({
   invalid: {
     borderColor: 'red',

@@ -87,6 +87,12 @@ export const BackToDeckButton = styled.TouchableOpacity`
   ${CenteredButton}
 `
 
+export const QuizNextQuestionButton = styled.TouchableOpacity`
+  ${Button}
+  ${MediumButton}
+  ${CenteredButton}
+`
+
 export const styles = StyleSheet.create({
   disabledCorrect: {
     backgroundColor: 'rgba(43, 119, 34, 0.5)'

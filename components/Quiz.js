@@ -16,12 +16,14 @@ import {
   QuestionAnswerOption,
   ShowAnswer,
   Answer,
+  NextQuestionText,
 } from './style/Text'
 
 import {
   QuizCorrectButton,
   QuizIncorrectButton,
   QuizShowAnswer,
+  QuizNextQuestionButton,
   styles,
 } from './style/Button'
 
@@ -83,7 +85,7 @@ class Quiz extends Component {
 
         {showAnswer
           ?
-            <Answer style={{marginBottom: 25}}>
+            <Answer>
               {`${deck.questions[number].answer}!`}
             </Answer>
           :
@@ -113,6 +115,13 @@ class Quiz extends Component {
           style={[showAnswer && deck.questions[number].answer !== 'Incorrect' ? styles.disabledIncorrect : '']}>
           <QuestionAnswerOption>Incorrect</QuestionAnswerOption>
         </QuizIncorrectButton>
+
+        { showAnswer && (
+            <QuizNextQuestionButton onPress={() => this.toNextQuestion()}>
+              <NextQuestionText>Next Question</NextQuestionText>
+            </QuizNextQuestionButton>
+          )
+        }
       </Wrapper>
     )
   }
