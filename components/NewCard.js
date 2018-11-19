@@ -13,17 +13,18 @@ class NewCard extends Component {
 
   state = { question: '', questionError: false, answer: 'Correct' }
 
-  toDeckList = () => this.props.navigation.navigate('DeckList')
+  deck = this.props.navigation.getParam('deck')
+
+  toDeckList = () => this.props.navigation.navigate('Deck', { deckTitle: this.deck.title })
 
   checkCard = () => this.state.question.trim() === '' ? this.setState(() => ({ questionError: true })) : this.addNewCard()
 
   addNewCard = () => {
-    const deck = this.props.navigation.getParam('deck')
     const question = { question: this.state.question, answer: this.state.answer }
 
-    deck.questions.push(question)
+    this.deck.questions.push(question)
 
-    addCard(deck.title, deck.questions)
+    addCard(this.deck.title, this.deck.questions)
     this.toDeckList()
   }
 
@@ -48,7 +49,6 @@ class NewCard extends Component {
         <AddCardQuestion onPress={this.checkCard}>
           <AddCardQuestionText>Add Card</AddCardQuestionText>
         </AddCardQuestion>
-
       </Wrapper>
     )
   }
