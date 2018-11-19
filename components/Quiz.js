@@ -32,19 +32,16 @@ class Quiz extends Component {
     number: 0,
     showAnswer: false,
     points: 0,
+    isLastQuestion: false,
   }
 
   deck = this.props.navigation.getParam('deck')
 
   willFocusSubscription = this.props.navigation.addListener(
     'willFocus', () => { 
-      this.setState({ number: 0, points: 0 })
+      this.setState({ number: 0, points: 0, showAnswer: false, isLastQuestion: false })
     }
   )
-
-  componentWillUnmount() {
-    willFocusSubscription.remove()
-  }
 
   sendAnswer(option) {
     const {
@@ -53,8 +50,8 @@ class Quiz extends Component {
     } = this.state
 
     this.deck.questions[number].answer === option 
-      ? this.setState({ points: points + 1 }, () => this.toNextQuestion()) 
-      : this.toNextQuestion()
+    ? this.setState({ points: points + 1, showAnswer: true })
+    : this.setState({ showAnswer: true })
   }
 
   toNextQuestion() {
@@ -65,10 +62,11 @@ class Quiz extends Component {
     number + 1 < this.deck.questions.length
     ? this.setState({ number: number + 1, showAnswer: false })
     : this.props.navigation.navigate('QuizResult', { 
-      result: this.state.points, 
-      totalQuestions: this.deck.questions.length,
-      deck: this.deck
-    })
+        result: this.state.points, 
+        totalQuestions: this.deck.questions.length,
+        deck: this.deck
+      })
+      this.setState({ isLastQuestion: true })
   }
 
   render() {
@@ -77,6 +75,7 @@ class Quiz extends Component {
     const {
       number,
       showAnswer,
+      isLastQuestion,
     } = this.state
 
     return (
@@ -118,7 +117,7 @@ class Quiz extends Component {
 
         { showAnswer && (
             <QuizNextQuestionButton onPress={() => this.toNextQuestion()}>
-              <NextQuestionText>Next Question</NextQuestionText>
+              <NextQuestionText>{`${!isLastQuestion ? 'Next Question' : 'See Result'}`}</NextQuestionText>
             </QuizNextQuestionButton>
           )
         }
