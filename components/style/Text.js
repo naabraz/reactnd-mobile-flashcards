@@ -168,6 +168,17 @@ export const QuizShowAnswerText = styled.Text`
   text-align: center
 `
 
+export const AnswerResultText = styled.Text`
+  text-align: center
+  font-size: 18px
+  width: 100%
+`
+
+export const AnswerResultTextIcon = styled.Text`
+  text-align: center
+  width: 100%
+`
+
 export const styles = StyleSheet.create({
   invalid: {
     borderColor: 'red',

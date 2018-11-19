@@ -12,3 +12,8 @@ export const Wrapper = styled.View `
   flex: 2
   background-color: ${lightGray}
 `
+
+export const QuizAnswerResult = styled.View `
+  margin-top: 25%
+  margin-bottom: 10%
+`

@@ -61,14 +61,14 @@ export const QuizCorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
-  background: rgba(43, 119, 34, 1)
+  background: green
 `
 
 export const QuizIncorrectButton = styled.TouchableOpacity `
   ${Button}
   ${MediumButton}
   ${CenteredButton}
-  background: rgba(168, 0, 0, 1)
+  background: red
 `
 export const QuizShowAnswer = styled.TouchableOpacity `
   ${MediumButton}
