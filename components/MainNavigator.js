@@ -1,21 +1,9 @@
 import React from 'react'
 
-import {
-  createBottomTabNavigator,
-  createStackNavigator,
-} from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
-import {
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from '@expo/vector-icons'
-
-import {
-  darkGray,
-  lightGray,
-  white,
-  orange,
-} from './style/utils/colors'
+import { darkGray, lightGray, white, orange } from './style/utils/colors'
 
 import DecksList from './DecksList'
 import NewDeck from './NewDeck'
@@ -35,7 +23,7 @@ const headerOptions = {
 }
 
 const DecksListStack = createStackNavigator({
-  Decks: {
+  DeckList: {
     screen: DecksList,
     navigationOptions: {
       ...headerOptions,

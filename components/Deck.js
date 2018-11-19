@@ -1,30 +1,11 @@
-import React, {
-  Component,
-} from 'react'
+import React, { Component } from 'react'
 
-import {
-  getDeck,
-} from '../api/DeckStorage'
+import { getDeck } from '../api/DeckStorage'
 
-import {
-  DeckName,
-  DeckCardsQuantity,
-  AddCardText,
-  StartQuizText,
-} from './style/Text'
-
-import {
-  AddCard,
-  StartQuiz,
-} from './style/Button'
-
-import {
-  Wrapper,
-} from './style/Wrapper'
-
-import {
-  black,
-} from './style/utils/colors'
+import { DeckName, DeckCardsQuantity, AddCardText, StartQuizText } from './style/Text'
+import { AddCard, StartQuiz } from './style/Button'
+import { Wrapper } from './style/Wrapper'
+import { black } from './style/utils/colors'
 
 export class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -33,7 +14,7 @@ export class Deck extends Component {
     }
   }
 
-  componentDidMount() {
+  getDeckInfo() {
     const title = this.props.navigation.getParam('deckTitle')
 
     getDeck(title).then((deck) => {
@@ -41,26 +22,24 @@ export class Deck extends Component {
     })
   }
 
+  willFocusSubscription = this.props.navigation.addListener(
+    'willFocus', () => this.getDeckInfo()
+  )
+
+  componentWillUnmount() {
+    this.willFocusSubscription.remove()
+  }
+
   state = {
-    deck: {
-      title: '',
-      questions: [],
-    }
+    deck: { title: '', questions: [] }
   }
 
   render() {
-    const {
-      navigation,
-    } = this.props
+    const { navigation } = this.props
 
-    const {
-      deck,
-    } = this.state
+    const { deck } = this.state
 
-    const {
-      title,
-      questions,
-    } = deck
+    const { title, questions } = deck
 
     return(
       <Wrapper>
@@ -70,9 +49,11 @@ export class Deck extends Component {
         <AddCard onPress={() => navigation.navigate('NewCard', { deck })}>
           <AddCardText>Add Card</AddCardText>
         </AddCard>
-        <StartQuiz onPress={() => navigation.navigate('Quiz', { deck })}>
-          <StartQuizText>Start Quiz</StartQuizText>
-        </StartQuiz>
+        {questions.length > 0 && (
+          <StartQuiz onPress={() => navigation.navigate('Quiz', { deck })}>
+            <StartQuizText>Start Quiz</StartQuizText>
+          </StartQuiz>)
+        }
       </Wrapper>
     )
   }

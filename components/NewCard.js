@@ -1,66 +1,30 @@
-import React, {
-  Component,
-} from 'react'
+import React, { Component } from 'react'
 
-import {
-  addCard,
-} from '../api/DeckStorage'
+import { addCard } from '../api/DeckStorage'
 
-import {
-   Wrapper,
-} from './style/Wrapper'
-
-import {
-  NewCardInput,
-  AddCardQuestionText,
-  SelectAnswer,
-  styles
-} from './style/Text'
-
-import {
-  AddCardQuestion,
-} from './style/Button'
+import { Wrapper } from './style/Wrapper'
+import { NewCardInput, AddCardQuestionText, SelectAnswer, styles } from './style/Text'
+import { AddCardQuestion } from './style/Button'
 
 class NewCard extends Component {
   static navigationOptions = {
     title: 'Add Card',
    }
 
-  state = {
-    question: '',
-    questionError: false,
-    answer: '',
-  }
+  state = { question: '', questionError: false, answer: 'Correct' }
 
-  toHome = () => {
-    this.props.navigation.navigate('Decks')
-  }
+  toDeckList = () => this.props.navigation.navigate('DeckList')
 
-  checkCard = () => {
-    if (this.state.question.trim() === '') {
-      this.setState(() => ({ questionError: true }))
-    }
-    else if (this.state.answer.trim() === '') {
-      this.setState(() => ({ answerError: true }))
-    }
-    else {
-      this.addNewCard()
-    }
-  }
+  checkCard = () => this.state.question.trim() === '' ? this.setState(() => ({ questionError: true })) : this.addNewCard()
 
   addNewCard = () => {
     const deck = this.props.navigation.getParam('deck')
-
-    const question = {
-      question: this.state.question,
-      answer: this.state.answer,
-    }
+    const question = { question: this.state.question, answer: this.state.answer }
 
     deck.questions.push(question)
 
     addCard(deck.title, deck.questions)
-
-    this.toHome()
+    this.toDeckList()
   }
 
   render() {

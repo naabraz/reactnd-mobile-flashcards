@@ -1,39 +1,12 @@
-import React, {
-  Component,
-} from 'react'
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
 
-import {
-  Text,
-  View,
-} from 'react-native'
-
-import {
-  Wrapper,
-} from './style/Wrapper'
-
-import {
-  QuestionText,
-  QuestionAnswerOption,
-  ShowAnswer,
-  Answer,
-  NextQuestionText,
-} from './style/Text'
-
-import {
-  QuizCorrectButton,
-  QuizIncorrectButton,
-  QuizShowAnswer,
-  QuizNextQuestionButton,
-  styles,
-} from './style/Button'
+import { Wrapper } from './style/Wrapper'
+import { QuestionText, QuestionAnswerOption, ShowAnswer, Answer, NextQuestionText } from './style/Text'
+import { QuizCorrectButton, QuizIncorrectButton, QuizShowAnswer, QuizNextQuestionButton, styles } from './style/Button'
 
 class Quiz extends Component {
-  state = {
-    number: 0,
-    showAnswer: false,
-    points: 0,
-    isLastQuestion: false,
-  }
+  state = { number: 0, showAnswer: false, points: 0, isLastQuestion: false }
 
   deck = this.props.navigation.getParam('deck')
 
@@ -43,11 +16,12 @@ class Quiz extends Component {
     }
   )
 
+  componentWillUnmount() {
+    this.willFocusSubscription.remove()
+  }
+    
   sendAnswer(option) {
-    const {
-      number,
-      points,
-    } = this.state
+    const { number, points } = this.state
 
     this.deck.questions[number].answer === option 
     ? this.setState({ points: points + 1, showAnswer: true, rightAnswer: true })
@@ -55,30 +29,20 @@ class Quiz extends Component {
   }
 
   toNextQuestion() {
-    const {
-      number,
-    } = this.state
+    const { number } = this.state
 
-    const quizResultParams = { 
-      result: this.state.points, 
-      totalQuestions: this.deck.questions.length,
-      deck: this.deck,
-    }
+    const quizResultParams = { result: this.state.points, totalQuestions: this.deck.questions.length, deck: this.deck }
 
-    number + 1 < this.deck.questions.length
-    ? this.setState({ number: number + 1, showAnswer: false })
-    : this.props.navigation.navigate('QuizResult', quizResultParams)
+    number + 1 < this.deck.questions.length ?
+      this.setState({ number: number + 1, showAnswer: false }): 
+      this.props.navigation.navigate('QuizResult', quizResultParams)
       this.setState({ isLastQuestion: true })
   }
 
   render() {
     const deck = this.deck
 
-    const {
-      number,
-      showAnswer,
-      isLastQuestion,
-    } = this.state
+    const { number, showAnswer, isLastQuestion } = this.state
 
     const answer = deck.questions[number].answer === 'Correct' ? 'Yes!' : 'No!'
 

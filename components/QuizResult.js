@@ -1,21 +1,8 @@
-import React, {
-  Component
-} from 'react'
+import React, { Component } from 'react'
 
-import {
-  Wrapper,
-} from './style/Wrapper'
-
-import {
-  QuizResultText,
-  RestartQuizText,
-  BackToDeckText,
-} from './style/Text'
-
-import {
-  RestartQuizButton,
-  BackToDeckButton,
-} from './style/Button'
+import { Wrapper } from './style/Wrapper'
+import { QuizResultText, RestartQuizText, BackToDeckText } from './style/Text'
+import { RestartQuizButton, BackToDeckButton } from './style/Button'
 
 class QuizResult extends Component {
   static navigationOptions = {
