@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { addDayScore } from '../api/DeckStorage'
 
+import { setLocalNotification, clearLocalNotification } from '../utils/notifications'
+
 import { Wrapper } from './style/Wrapper'
 import { QuizResultText, RestartQuizText, BackToDeckText } from './style/Text'
 import { RestartQuizButton, BackToDeckButton } from './style/Button'
@@ -26,6 +28,9 @@ class QuizResult extends Component {
 
     this.deck.scores.length > 0 ? this.checkDuplicateScore(score) : this.deck.scores.push(score)
 
+    clearLocalNotification()
+    .then(setLocalNotification())
+  
     return {
       ...this.deck
     }
