@@ -1,0 +1,1 @@
+const NOTIFICATION_KEY = 'flashcards:notifications'

@@ -31,7 +31,10 @@ export class Deck extends Component {
   }
 
   state = {
-    deck: { title: '', questions: [] }
+    deck: { 
+      title: '', 
+      questions: [] 
+    }
   }
 
   render() {

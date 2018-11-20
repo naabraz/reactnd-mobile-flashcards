@@ -11,6 +11,8 @@ class QuizResult extends Component {
     title: 'Quiz Result',
   }
 
+  deck = this.props.navigation.getParam('deck')
+
   getCurrentDate() {
     const date = new Date()
     const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
@@ -18,16 +20,25 @@ class QuizResult extends Component {
   }
 
   deckScoreObject(percentage) {
-    const deck = this.props.navigation.getParam('deck')
     const score = {
       [this.getCurrentDate()]: percentage
     }
 
-    deck.scores.push(score)
+    this.deck.scores.length > 0 ? this.checkDuplicateScore(score) : deck.scores.push(score)
 
     return {
-      ...deck
+      ...this.deck
     }
+  }
+
+  checkDuplicateScore(dayScore) {
+    this.deck.scores.map((score) => Object.getOwnPropertyNames(score)
+      .map((item) => item !== this.getCurrentDate() ? deck.scores.push(score) : this.replaceCurrentScore(dayScore))
+    )
+  }
+
+  replaceCurrentScore(dayScore) {
+    this.deck.scores.map((score) => score[this.getCurrentDate()] = dayScore[this.getCurrentDate()])
   }
 
   render() {

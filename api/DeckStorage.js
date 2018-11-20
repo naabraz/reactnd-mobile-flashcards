@@ -33,12 +33,11 @@ export function getDeck(title) {
 }
 
 export function addDayScore(deck) {
-  console.log(deck)
-  // return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
-  //   [deck.title]: {
-  //     ...deck
-  //   }
-  // }))
+  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
+    [deck.title]: {
+      ...deck
+    }
+  }))
 }
 
 export function removeDeck() {
