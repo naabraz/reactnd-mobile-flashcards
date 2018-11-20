@@ -24,7 +24,7 @@ class QuizResult extends Component {
       [this.getCurrentDate()]: percentage
     }
 
-    this.deck.scores.length > 0 ? this.checkDuplicateScore(score) : deck.scores.push(score)
+    this.deck.scores.length > 0 ? this.checkDuplicateScore(score) : this.deck.scores.push(score)
 
     return {
       ...this.deck
@@ -33,7 +33,7 @@ class QuizResult extends Component {
 
   checkDuplicateScore(dayScore) {
     this.deck.scores.map((score) => Object.getOwnPropertyNames(score)
-      .map((item) => item !== this.getCurrentDate() ? deck.scores.push(score) : this.replaceCurrentScore(dayScore))
+      .map((item) => item !== this.getCurrentDate() ? this.deck.scores.push(score) : this.replaceCurrentScore(dayScore))
     )
   }
 
