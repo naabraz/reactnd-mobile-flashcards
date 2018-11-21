@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { darkGray, lightGray, white, orange } from './style/utils/colors'
 
@@ -66,22 +66,24 @@ const NewDeckStack = createStackNavigator({
 
 export default MainNavigator = createBottomTabNavigator(
   {
-    ['My Decks']: DecksListStack,
-    ['New Deck']: NewDeckStack,
+    ['My Decks']: {
+      screen: DecksListStack
+    },
+    ['New Deck']: {
+      screen: NewDeckStack
+    },
   },
   {
+    initialRouteName: 'My Decks',
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state
 
-        const icons = routeName === 'NewDeck' ?
-          <MaterialIcons name={'add-box'} size={30} color={tintColor} /> :
-          <MaterialCommunityIcons name={'cards'} size={30} color={tintColor} />
+        const iconName = routeName === 'New Deck' ? 'add-circle' : 'folder'
 
-        return icons
+        return <MaterialIcons name={iconName} size={24} color={tintColor} />
       },
     }),
-
     tabBarOptions: {
       activeTintColor: orange,
       inactiveTintColor: lightGray,
@@ -89,6 +91,8 @@ export default MainNavigator = createBottomTabNavigator(
         height: 60,
         backgroundColor: darkGray,
       }
-    }
+    },
+    animationEnabled: true,
+    swipeEnabled: true
   }
 )
