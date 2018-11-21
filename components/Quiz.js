@@ -8,10 +8,10 @@ import { QuizCorrectButton, QuizIncorrectButton, QuizNextQuestionButton, QuizSho
 import QuizShowAnswer from './QuizShowAnswer';
 
 class Quiz extends Component {
-  state = { 
-    number: 0, 
-    showAnswer: false, 
-    points: 0, 
+  state = {
+    number: 0,
+    showAnswer: false,
+    points: 0,
     isLastQuestion: false,
     rightAnswer: true,
     answered: false,
@@ -21,11 +21,13 @@ class Quiz extends Component {
 
   willFocusSubscription = this.props.navigation.addListener(
     'willFocus', () => {
-      this.setState({ 
-        number: 0, 
-        points: 0, 
-        showAnswer: false, 
+      this.setState({
+        number: 0,
+        points: 0,
+        showAnswer: false,
         isLastQuestion: false,
+        rightAnswer: false,
+        answered: false,
       })
     }
   )
@@ -33,22 +35,22 @@ class Quiz extends Component {
   componentWillUnmount() {
     this.willFocusSubscription.remove()
   }
-    
+
   sendAnswer(option) {
-    const { 
-      number, 
+    const {
+      number,
       points,
     } = this.state
 
-    this.deck.questions[number].answer === option 
-    ? this.setState({ 
-      points: points + 1, 
-      showAnswer: true, 
+    this.deck.questions[number].answer === option
+    ? this.setState({
+      points: points + 1,
+      showAnswer: true,
       rightAnswer: true,
       answered: true,
     })
-    : this.setState({ 
-      showAnswer: true, 
+    : this.setState({
+      showAnswer: true,
       rightAnswer: false,
       answered: true,
     })
@@ -56,14 +58,14 @@ class Quiz extends Component {
 
   toNextQuestion() {
     const { number } = this.state
-    const quizResultParams = { 
-      result: this.state.points, 
+    const quizResultParams = {
+      result: this.state.points,
       totalQuestions: this.deck.questions.length, deck: this.deck,
     }
 
     number + 1 < this.deck.questions.length
-    ? this.setState({ 
-      number: number + 1, 
+    ? this.setState({
+      number: number + 1,
       showAnswer: false,
       answered: false,
     })
@@ -110,7 +112,7 @@ class Quiz extends Component {
             { answered && <QuizShowAnswer rightAnswer={rightAnswer} /> }
             <QuizNextQuestionButton onPress={() => this.toNextQuestion()}>
               <NextQuestionText>{`${number + 1 < this.deck.questions.length ? 'Next Question' : 'See Result'}`}</NextQuestionText>
-            </QuizNextQuestionButton> 
+            </QuizNextQuestionButton>
           </View>
           :
           <QuizShowAnswerButton onPress={() => this.setState({ showAnswer: !showAnswer })}>
