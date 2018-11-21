@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { fetchDecks, removeDeck } from '../api/DeckStorage'
+import { fetchDecks } from '../api/DeckStorage'
 
 import { DeckList } from './style/List'
 import { DeckNameButton, EmptyDeckText, DeckCardsQuantity } from './style/Text'
@@ -12,8 +12,8 @@ class DecksList extends Component {
     title: 'My Decks',
   }
 
-  state = { 
-    decks: { } 
+  state = {
+    decks: { }
   }
 
   getAllDecks = () => fetchDecks().then((decks) => this.setState({decks}))
