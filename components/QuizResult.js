@@ -30,7 +30,7 @@ class QuizResult extends Component {
 
     clearLocalNotification()
     .then(setLocalNotification())
-  
+
     return {
       ...this.deck
     }
@@ -53,7 +53,7 @@ class QuizResult extends Component {
     const totalQuestions = navigation.getParam('totalQuestions')
     const deck = navigation.getParam('deck')
 
-    const percentage = result / totalQuestions * 100
+    const percentage = Math.round(result / totalQuestions * 100)
 
     addDayScore(this.deckScoreObject(percentage))
 
